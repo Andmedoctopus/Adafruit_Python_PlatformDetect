@@ -55,7 +55,9 @@ class Chip:
 
         if getattr(os, "environ", None) is not None:
             try:
-                return os.environ["BLINKA_FORCECHIP"]
+                chip = os.environ["BLINKA_FORCECHIP"]
+                if not chip:
+                    return None
             except KeyError:  # no forced chip, continue with testing!
                 pass
 
